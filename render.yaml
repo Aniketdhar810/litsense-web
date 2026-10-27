@@ -4,6 +4,9 @@ services:
   - type: web
     name: litsense-api
     runtime: docker
+    # Same region as the model service (litsense-model render.yaml), so model calls stay local.
+    region: singapore
+    plan: free
     dockerfilePath: ./apps/api/Dockerfile
     dockerContext: .
     healthCheckPath: /healthz
