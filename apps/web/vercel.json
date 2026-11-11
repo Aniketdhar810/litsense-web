@@ -1,8 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "cd ../.. && npm ci",
-  "buildCommand": "cd ../.. && npm run build -w @litsense/shared && npm run build -w @litsense/web",
+  "buildCommand": "cd ../.. && npm run build -w @litsense/shared && npm run build -w @litsense/web && mkdir -p apps/web/dist/presentation && cp -R prototype/. apps/web/dist/presentation/",
   "outputDirectory": "dist",
+  "redirects": [
+    { "source": "/discover", "destination": "/presentation/", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/api/:path*", "destination": "https://litsense-api.onrender.com/api/:path*" },
     { "source": "/((?!assets/|favicon\\.svg).*)", "destination": "/index.html" }
